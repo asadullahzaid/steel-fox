@@ -1,0 +1,129 @@
+/* Steel Fox owner-controlled showroom images */
+.admin-showroom-section {
+  margin: 28px 0 34px;
+  padding: 24px;
+  border: 1px solid #2b2b2b;
+  background: #101010;
+}
+
+.admin-section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 24px;
+  margin-bottom: 22px;
+}
+
+.admin-section-heading h2 {
+  margin: 0;
+  font-size: 28px;
+  letter-spacing: -0.04em;
+}
+
+.admin-section-heading > span {
+  color: #777;
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+.admin-showroom-grid {
+  display: grid;
+  grid-template-columns: 1.35fr 1fr 1fr 1fr;
+  gap: 12px;
+}
+
+.admin-showroom-card {
+  border: 1px solid #2a2a2a;
+  background: #161616;
+  padding: 10px;
+}
+
+.admin-showroom-preview {
+  position: relative;
+  height: 190px;
+  overflow: hidden;
+  background: #222;
+  margin-bottom: 10px;
+}
+
+.admin-showroom-preview img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.admin-showroom-preview span {
+  position: absolute;
+  left: 9px;
+  bottom: 9px;
+  padding: 6px 8px;
+  background: rgba(0, 0, 0, 0.75);
+  color: #fff;
+  font-size: 8px;
+  letter-spacing: 0.12em;
+}
+
+.admin-image-button {
+  position: relative;
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 11px 8px;
+  border: 1px solid #444;
+  color: #fff;
+  text-align: center;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.admin-image-button:hover {
+  background: #fff;
+  color: #000;
+  border-color: #fff;
+}
+
+.admin-image-button input {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.admin-image-button input:disabled {
+  cursor: not-allowed;
+}
+
+@media (max-width: 1000px) {
+  .admin-showroom-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 700px) {
+  .admin-showroom-section {
+    padding: 18px;
+  }
+
+  .admin-section-heading {
+    display: block;
+  }
+
+  .admin-section-heading > span {
+    display: block;
+    margin-top: 10px;
+  }
+
+  .admin-showroom-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-showroom-preview {
+    height: 220px;
+  }
+}
