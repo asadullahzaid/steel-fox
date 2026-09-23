@@ -1,0 +1,523 @@
+/* =========================================================
+   STEEL FOX — LIGHT THEME OVERRIDES
+   App.css is intentionally left untouched.
+   ========================================================= */
+
+html,
+body {
+  background: #f4f4f2 !important;
+  color: #111 !important;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+.app {
+  background: #f4f4f2 !important;
+  color: #111 !important;
+}
+
+/* Black header stays locked. */
+.site-header {
+  background: #080808 !important;
+  color: #fff !important;
+  border-bottom-color: #222 !important;
+}
+
+.main-nav a,
+.icon-button,
+.cart-button,
+.menu-button {
+  color: #fff !important;
+}
+
+.main-nav a:hover {
+  color: #c7c9cc !important;
+}
+
+/* Hero photo remains the only homepage photo. */
+.hero {
+  background-color: #dfe0e1 !important;
+}
+
+/* Main light sections. */
+.statement,
+.categories,
+.products-section,
+.about-section,
+.contact-section {
+  background: #f4f4f2 !important;
+  color: #111 !important;
+}
+
+.statement h2,
+.statement p,
+.categories h2,
+.products-section h2,
+.about-section h2,
+.contact-section h2,
+.section-description,
+.about-content p,
+.contact-section p {
+  color: #111 !important;
+}
+
+.eyebrow,
+.product-category,
+.product-info h3,
+.product-info,
+.product-price {
+  color: #222 !important;
+}
+
+.product-grid {
+  background: transparent !important;
+}
+
+.product-card {
+  background: #fff !important;
+  color: #111 !important;
+  border-color: #dedede !important;
+}
+
+.product-image-wrap {
+  background: #e9e9e7 !important;
+}
+
+.product-image {
+  background: #e9e9e7 !important;
+}
+
+.product-info {
+  background: #fff !important;
+}
+
+.product-info .mrp {
+  color: #777 !important;
+}
+
+.product-info .off {
+  color: #444 !important;
+}
+
+.product-card-rating {
+  color: #555 !important;
+}
+
+/* Clean light promo area. */
+.promo {
+  background: #e9e9e7 !important;
+  color: #111 !important;
+}
+
+.promo h2,
+.promo p {
+  color: #111 !important;
+}
+
+/* Light footer. */
+.footer {
+  background: #e9e9e7 !important;
+  color: #111 !important;
+  border-top: 1px solid #d5d5d3 !important;
+}
+
+.footer h2,
+.footer h3,
+.footer p,
+.footer a,
+.footer-links h4,
+.footer-bottom {
+  color: #222 !important;
+}
+
+.footer a:hover {
+  color: #000 !important;
+}
+
+.footer-bottom {
+  border-top-color: #d2d2d0 !important;
+}
+
+/* Cart stays clean and readable. */
+.cart-backdrop,
+.checkout-backdrop {
+  background: rgba(0, 0, 0, 0.45) !important;
+}
+
+.cart-drawer,
+.checkout-modal,
+.product-modal {
+  background: #fff !important;
+  color: #111 !important;
+}
+
+.cart-drawer h2,
+.cart-drawer h3,
+.cart-drawer p,
+.checkout-modal h2,
+.checkout-modal label,
+.product-modal h2,
+.product-modal p {
+  color: #111 !important;
+}
+
+.cart-item {
+  border-bottom-color: #e0e0de !important;
+}
+
+.cart-summary {
+  border-top-color: #ddd !important;
+}
+
+/* Product detail/gallery. */
+.product-modal-content {
+  background: #fff !important;
+  color: #111 !important;
+}
+
+.product-modal-image-wrap {
+  background: #ededeb !important;
+}
+
+.product-thumbnail-button {
+  background: #f3f3f1 !important;
+  border-color: #ddd !important;
+}
+
+.product-thumbnail-button.active {
+  border-color: #111 !important;
+}
+
+.product-review-input {
+  background: #fafaf8 !important;
+  color: #111 !important;
+  border-color: #d2d2d0 !important;
+}
+
+.product-review-input::placeholder {
+  color: #777 !important;
+}
+
+/* Buttons remain black/white for the light theme. */
+.button-dark,
+.product-review-submit,
+.modal-add-button {
+  background: #111 !important;
+  color: #fff !important;
+}
+
+.button-light {
+  background: #fff !important;
+  color: #111 !important;
+}
+
+/* Keep owner/admin screens clean and light. */
+.admin-page {
+  background: #f2f2f0 !important;
+  color: #111 !important;
+}
+
+/* Mobile consistency. */
+@media (max-width: 760px) {
+  .main-nav {
+    background: #080808 !important;
+    border-bottom-color: #222 !important;
+  }
+
+  .products-section,
+  .statement,
+  .categories,
+  .about-section,
+  .contact-section {
+    background: #f4f4f2 !important;
+  }
+
+  .product-card {
+    background: #fff !important;
+  }
+
+  .promo,
+  .footer {
+    background: #e9e9e7 !important;
+  }
+}
+
+
+/* Customer written reviews */
+.customer-reviews {
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid #dededc;
+}
+
+.customer-reviews-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+  color: #111;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .12em;
+}
+
+.customer-reviews-list {
+  display: grid;
+  gap: 10px;
+}
+
+.customer-review {
+  padding: 12px;
+  background: #f6f6f4;
+  border: 1px solid #e1e1df;
+}
+
+.customer-review-stars {
+  color: #111;
+  font-size: 12px;
+  letter-spacing: 2px;
+  margin-bottom: 6px;
+}
+
+.customer-review p {
+  margin: 0;
+  color: #333 !important;
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.customer-review-note {
+  display: block;
+  margin-top: 10px;
+  color: #777;
+}
+
+
+.products-loading {
+  min-height: 220px;
+  display: grid;
+  place-items: center;
+  grid-column: 1 / -1;
+  color: #666;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .16em;
+}
+
+
+/* =========================================================
+   STEEL FOX — FINAL RESPONSIVE POLISH
+   ========================================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+img {
+  max-width: 100%;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+.product-card {
+  min-width: 0;
+  overflow: hidden;
+}
+
+.product-image-wrap {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+}
+
+.product-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.product-modal {
+  max-width: min(1100px, calc(100vw - 32px));
+  max-height: calc(100vh - 32px);
+  overflow: auto;
+}
+
+.product-modal-image-wrap {
+  overflow: hidden;
+}
+
+.product-modal-image {
+  width: 100%;
+  height: auto;
+  max-height: 65vh;
+  object-fit: contain;
+  display: block;
+}
+
+.product-thumbnails {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding: 8px 2px;
+  scrollbar-width: thin;
+}
+
+.product-thumbnail-button {
+  flex: 0 0 64px;
+  width: 64px;
+  height: 76px;
+  padding: 0;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.product-thumbnail-button img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.admin-editor {
+  max-width: min(900px, calc(100vw - 24px));
+  max-height: calc(100vh - 24px);
+  overflow-y: auto;
+}
+
+.admin-image-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.admin-image-item {
+  min-width: 0;
+}
+
+.admin-image-item img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  display: block;
+}
+
+.admin-size-stock-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.products-loading {
+  min-height: 220px;
+  display: grid;
+  place-items: center;
+  grid-column: 1 / -1;
+  color: #666;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .16em;
+}
+
+/* Small screens: keep the site usable like a real mobile storefront. */
+@media (max-width: 700px) {
+  .site-header {
+    min-height: 68px;
+  }
+
+  .brand-logo {
+    width: 44px !important;
+    height: 44px !important;
+  }
+
+  .brand span {
+    font-size: 18px !important;
+    letter-spacing: .10em !important;
+  }
+
+  .hero {
+    min-height: auto !important;
+    height: auto !important;
+    background-image: none !important;
+  }
+
+  .hero-content {
+    min-height: 0 !important;
+  }
+
+  .product-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 10px !important;
+  }
+
+  .product-info h3 {
+    font-size: 12px !important;
+  }
+
+  .product-info {
+    padding: 10px !important;
+  }
+
+  .product-modal {
+    width: calc(100vw - 16px) !important;
+    max-width: calc(100vw - 16px) !important;
+    max-height: calc(100vh - 16px) !important;
+    margin: 8px !important;
+  }
+
+  .product-modal-image {
+    max-height: 42vh;
+  }
+
+  .product-thumbnail-button {
+    flex-basis: 58px;
+    width: 58px;
+    height: 68px;
+  }
+
+  .admin-image-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .admin-form-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .admin-product-row {
+    flex-wrap: wrap;
+  }
+
+  .contact-actions {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+@media (max-width: 420px) {
+  .product-grid {
+    gap: 8px !important;
+  }
+
+  .product-info h3 {
+    font-size: 11px !important;
+  }
+
+  .product-price {
+    font-size: 13px !important;
+  }
+
+  .product-modal-image {
+    max-height: 36vh;
+  }
+}

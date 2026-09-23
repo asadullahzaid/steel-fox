@@ -127,3 +127,12 @@
     height: 220px;
   }
 }
+
+
+/* Light theme overrides for the owner hero image manager */
+.admin-showroom-section { border-color: #ddd; background: #fff; }
+.admin-showroom-card { border-color: #ddd; background: #f4f4f2; }
+.admin-showroom-preview { background: #eee; }
+.admin-showroom-preview span { background: rgba(0,0,0,.72); color: #fff; }
+.admin-image-button { border-color: #bbb; color: #111; background: #fff; }
+.admin-image-button:hover { background: #111; color: #fff; border-color: #111; }
