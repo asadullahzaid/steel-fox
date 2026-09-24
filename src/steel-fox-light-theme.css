@@ -1002,3 +1002,91 @@ body,
     grid-template-columns: 1fr !important;
   }
 }
+
+
+/* =========================================================
+   STEEL FOX — FINAL HERO IMAGE FIX
+   The hero uses a real <img>, so the uploaded image itself
+   must determine the hero height. No cover/cropping.
+   ========================================================= */
+
+.hero {
+  width: 100% !important;
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  aspect-ratio: auto !important;
+  padding: 0 !important;
+  overflow: visible !important;
+  background: #dfe0e1 !important;
+  background-image: none !important;
+  display: block !important;
+  position: relative !important;
+}
+
+.hero > img {
+  display: block !important;
+  width: 100% !important;
+  height: auto !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  aspect-ratio: auto !important;
+  object-fit: contain !important;
+  object-position: center center !important;
+  margin: 0 !important;
+}
+
+.hero-content-minimal {
+  position: absolute !important;
+  left: clamp(18px, 6vw, 90px) !important;
+  bottom: clamp(22px, 5vw, 52px) !important;
+  width: auto !important;
+  height: auto !important;
+  min-height: 0 !important;
+  padding: 0 !important;
+  z-index: 5 !important;
+  display: block !important;
+}
+
+.hero-content-minimal .button {
+  width: auto !important;
+  min-width: 145px !important;
+}
+
+/* Never impose a mobile crop ratio on the hero. */
+@media (max-width: 760px) {
+  .hero {
+    height: auto !important;
+    min-height: 0 !important;
+    aspect-ratio: auto !important;
+    padding: 0 !important;
+    overflow: visible !important;
+  }
+
+  .hero > img {
+    width: 100% !important;
+    height: auto !important;
+    max-width: 100% !important;
+    max-height: none !important;
+    object-fit: contain !important;
+  }
+
+  .hero-content-minimal {
+    left: 18px !important;
+    bottom: 18px !important;
+  }
+}
+
+@media (max-width: 420px) {
+  .hero > img {
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  .hero-content-minimal {
+    left: 14px !important;
+    bottom: 14px !important;
+  }
+}
