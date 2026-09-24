@@ -521,3 +521,484 @@ select {
     max-height: 36vh;
   }
 }
+
+/* =========================================================
+   STEEL FOX — UPDATE 2026-09-24
+   Responsive hero, product details, reviews, contact and checkout actions.
+   ========================================================= */
+
+html,
+body,
+#root,
+.app {
+  max-width: 100%;
+  overflow-x: hidden !important;
+}
+
+/* HERO: always show the complete uploaded image. */
+.hero {
+  height: auto !important;
+  min-height: 0 !important;
+  aspect-ratio: auto !important;
+  padding: 0 !important;
+  background: #dfe0e1 !important;
+  overflow: hidden !important;
+}
+
+.hero-image {
+  display: block !important;
+  width: 100% !important;
+  height: auto !important;
+  max-width: 100% !important;
+  max-height: none !important;
+  object-fit: contain !important;
+  object-position: center center !important;
+}
+
+.hero-content-minimal {
+  pointer-events: none;
+}
+
+.hero-content-minimal .button {
+  pointer-events: auto;
+}
+
+/* CONTACT: smaller, cleaner and properly spaced. */
+.contact-section {
+  padding: 78px 7vw 84px !important;
+}
+
+.contact-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.contact-heading {
+  max-width: 820px;
+}
+
+.contact-heading .eyebrow {
+  margin-bottom: 14px !important;
+  font-size: 10px !important;
+  letter-spacing: .22em !important;
+}
+
+.contact-heading h2 {
+  margin: 0 0 20px !important;
+  color: #1769d1 !important;
+  font-size: clamp(30px, 4.5vw, 52px) !important;
+  line-height: 1.05 !important;
+  letter-spacing: -.035em !important;
+}
+
+.contact-heading > p:last-child {
+  max-width: 700px;
+  margin: 0 !important;
+  color: #111 !important;
+  font-size: 15px !important;
+  line-height: 1.75 !important;
+}
+
+.contact-actions {
+  margin-top: 34px !important;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px !important;
+}
+
+.contact-card {
+  min-width: 0;
+  padding: 22px 24px !important;
+  border: 1px solid #d6d6d3 !important;
+  background: #fff !important;
+}
+
+.contact-card-label {
+  display: block;
+  margin-bottom: 9px;
+  color: #777 !important;
+  font-size: 9px !important;
+  letter-spacing: .16em !important;
+}
+
+.contact-card strong {
+  display: block;
+  margin-bottom: 9px;
+  color: #111 !important;
+  font-size: 14px !important;
+  letter-spacing: .08em !important;
+}
+
+.contact-card > span:last-child {
+  display: block;
+  color: #555 !important;
+  font-size: 12px !important;
+  line-height: 1.65 !important;
+}
+
+/* SALE LABELS: red discount treatment. */
+.discount-label,
+.product-price .off,
+.modal-off {
+  color: #d62828 !important;
+}
+
+.discount-label {
+  background: #d62828 !important;
+  color: #fff !important;
+}
+
+/* PRODUCT DETAIL MODAL: prevent horizontal overflow on every screen. */
+.product-modal-backdrop {
+  padding: 14px !important;
+  overflow-x: hidden !important;
+}
+
+.product-modal {
+  width: min(1080px, 100%) !important;
+  max-width: calc(100vw - 28px) !important;
+  max-height: calc(100vh - 28px) !important;
+  min-width: 0 !important;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+  overflow: auto !important;
+}
+
+.product-modal-gallery,
+.product-modal-content {
+  min-width: 0 !important;
+  width: 100% !important;
+  overflow-wrap: anywhere;
+}
+
+.product-modal-image-wrap {
+  width: 100% !important;
+  height: min(620px, 68vh) !important;
+  min-height: 360px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  overflow: hidden !important;
+  background: #f0f0ee !important;
+}
+
+.product-modal-image {
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
+  display: block !important;
+  object-fit: contain !important;
+  object-position: center center !important;
+}
+
+.product-thumbnails {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  gap: 8px !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+  padding: 10px 2px 8px !important;
+  margin: 0 !important;
+  scrollbar-width: thin;
+}
+
+.product-thumbnail-button {
+  flex: 0 0 70px !important;
+  width: 70px !important;
+  height: 82px !important;
+  min-width: 70px !important;
+  padding: 0 !important;
+  background: #f5f5f3 !important;
+  border: 1px solid #d4d4d2 !important;
+  overflow: hidden !important;
+}
+
+.product-thumbnail-button img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;
+  display: block !important;
+}
+
+.product-modal-content {
+  padding: 42px 38px 36px !important;
+  justify-content: flex-start !important;
+}
+
+.product-modal-content h2 {
+  max-width: 100% !important;
+  margin: 0 !important;
+  font-size: clamp(25px, 3vw, 42px) !important;
+  line-height: 1.08 !important;
+  letter-spacing: -.035em !important;
+  overflow-wrap: anywhere !important;
+  word-break: normal !important;
+}
+
+.modal-rating {
+  min-width: 0 !important;
+  flex-wrap: wrap;
+}
+
+/* REVIEW INPUT: five stars in one row, then textarea + submit button. */
+.rating-input {
+  display: block !important;
+  min-width: 0 !important;
+  padding: 18px 0 !important;
+  margin-bottom: 18px !important;
+}
+
+.rating-label {
+  display: block !important;
+  margin-bottom: 10px !important;
+  color: #111 !important;
+  font-size: 9px !important;
+  font-weight: 800 !important;
+  letter-spacing: .15em !important;
+}
+
+.rating-stars {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  align-items: center !important;
+  gap: 2px !important;
+  width: max-content !important;
+  max-width: 100% !important;
+  margin-bottom: 14px !important;
+}
+
+.rating-stars button {
+  flex: 0 0 auto !important;
+  width: 30px !important;
+  height: 30px !important;
+  padding: 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+  color: #c4c4c4 !important;
+  font-size: 25px !important;
+  line-height: 1 !important;
+}
+
+.rating-stars button.rated,
+.rating-stars button:hover:not(:disabled) {
+  color: #f4b400 !important;
+}
+
+.review-compose-row {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) auto !important;
+  align-items: stretch !important;
+  gap: 10px !important;
+  width: 100% !important;
+  min-width: 0 !important;
+}
+
+.product-review-input {
+  width: 100% !important;
+  min-width: 0 !important;
+  min-height: 82px !important;
+  resize: vertical !important;
+  padding: 11px 12px !important;
+  box-sizing: border-box !important;
+  font-size: 13px !important;
+  line-height: 1.45 !important;
+  border: 1px solid #cfcfcd !important;
+  background: #fafaf8 !important;
+  color: #111 !important;
+}
+
+.product-review-submit {
+  align-self: stretch !important;
+  min-width: 128px !important;
+  padding: 10px 14px !important;
+  border: 0 !important;
+  background: #f4b400 !important;
+  color: #111 !important;
+  font-size: 10px !important;
+  font-weight: 900 !important;
+  letter-spacing: .08em !important;
+  cursor: pointer !important;
+}
+
+.product-review-submit:disabled {
+  opacity: .55 !important;
+  cursor: not-allowed !important;
+}
+
+.review-submitted {
+  display: block !important;
+  margin-top: 12px !important;
+  color: #2c6b45 !important;
+  font-size: 11px !important;
+}
+
+.customer-reviews {
+  max-height: 360px !important;
+  overflow-y: auto !important;
+  padding-right: 4px !important;
+}
+
+.customer-reviews-list {
+  display: grid !important;
+  gap: 10px !important;
+}
+
+.customer-review {
+  min-width: 0 !important;
+}
+
+.customer-review p {
+  overflow-wrap: anywhere !important;
+}
+
+/* PRICE / STOCK / PURCHASE AREA */
+.modal-off {
+  font-weight: 900 !important;
+}
+
+.modal-purchase-actions {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+  gap: 10px !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  margin-top: 18px !important;
+}
+
+.modal-buy-now-button,
+.modal-add-button {
+  width: 100% !important;
+  min-width: 0 !important;
+  min-height: 54px !important;
+  margin-top: 0 !important;
+  padding: 10px 12px !important;
+  border: 0 !important;
+  font-size: 10px !important;
+  font-weight: 900 !important;
+  letter-spacing: .08em !important;
+  line-height: 1.35 !important;
+  white-space: normal !important;
+  overflow-wrap: anywhere !important;
+}
+
+.modal-buy-now-button {
+  background: #185c3a !important;
+  color: #fff !important;
+}
+
+.modal-buy-now-button:hover:not(:disabled) {
+  background: #12472d !important;
+}
+
+.modal-add-button {
+  background: #111 !important;
+  color: #fff !important;
+}
+
+.modal-buy-now-button:disabled,
+.modal-add-button:disabled {
+  opacity: .45 !important;
+  cursor: not-allowed !important;
+}
+
+/* Mobile product detail. */
+@media (max-width: 760px) {
+  .hero-content-minimal {
+    left: 18px !important;
+    bottom: 18px !important;
+  }
+
+  .contact-section {
+    padding: 56px 18px 64px !important;
+  }
+
+  .contact-heading h2 {
+    font-size: 30px !important;
+  }
+
+  .contact-heading > p:last-child {
+    font-size: 13px !important;
+    line-height: 1.7 !important;
+  }
+
+  .contact-actions {
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+    margin-top: 24px !important;
+  }
+
+  .product-modal-backdrop {
+    padding: 8px !important;
+    align-items: flex-start !important;
+  }
+
+  .product-modal {
+    width: calc(100vw - 16px) !important;
+    max-width: calc(100vw - 16px) !important;
+    max-height: calc(100vh - 16px) !important;
+    margin: 0 !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+  }
+
+  .product-modal-image-wrap {
+    height: min(58vh, 480px) !important;
+    min-height: 260px !important;
+  }
+
+  .product-thumbnail-button {
+    flex-basis: 64px !important;
+    width: 64px !important;
+    min-width: 64px !important;
+    height: 76px !important;
+  }
+
+  .product-modal-content {
+    padding: 26px 18px 24px !important;
+  }
+
+  .product-modal-content h2 {
+    font-size: clamp(24px, 7vw, 32px) !important;
+    line-height: 1.1 !important;
+  }
+
+  .review-compose-row {
+    grid-template-columns: minmax(0, 1fr) 118px !important;
+  }
+
+  .product-review-submit {
+    min-width: 118px !important;
+    font-size: 9px !important;
+  }
+
+  .modal-purchase-actions {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+    gap: 8px !important;
+  }
+}
+
+@media (max-width: 420px) {
+  .review-compose-row {
+    grid-template-columns: minmax(0, 1fr) 105px !important;
+    gap: 7px !important;
+  }
+
+  .product-review-submit {
+    min-width: 105px !important;
+    padding: 8px !important;
+    font-size: 8px !important;
+  }
+
+  .rating-stars button {
+    width: 27px !important;
+    height: 27px !important;
+    font-size: 23px !important;
+  }
+
+  .modal-purchase-actions {
+    grid-template-columns: 1fr !important;
+  }
+}

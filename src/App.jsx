@@ -2247,6 +2247,8 @@ function App() {
 
   const [checkoutOpen, setCheckoutOpen] = useState(false);
 
+  const [checkoutItems, setCheckoutItems] = useState([]);
+
 
 
 
@@ -2517,7 +2519,17 @@ function App() {
 
 
 
-  const openProduct = (product) => {
+    const checkoutSubtotal = checkoutItems.reduce(
+    (total, item) => total + item.sellingPrice * item.quantity,
+    0
+  );
+
+  const checkoutSavings = checkoutItems.reduce(
+    (total, item) => total + (item.mrp - item.sellingPrice) * item.quantity,
+    0
+  );
+
+const openProduct = (product) => {
     const imageUrls = Array.isArray(product.imageUrls) && product.imageUrls.length
       ? product.imageUrls
       : product.image
@@ -3055,46 +3067,49 @@ function App() {
 
 
   const openCheckout = () => {
+    if (cartItems.length === 0) return;
 
+    setCheckoutItems(cartItems);
+    setCartOpen(false);
+    setCheckoutOpen(true);
+    setOrderSubmitted(false);
+  };
 
+  const buySelectedProductNow = () => {
+    if (!selectedProduct || !selectedSize) return;
 
+    if (selectedProduct.stockStatus === "out_of_stock") {
+      alert("This product is currently out of stock.");
+      return;
+    }
 
+    if (selectedProduct.sizeStock?.[selectedSize] === false) {
+      alert(`Size ${selectedSize} is currently out of stock.`);
+      return;
+    }
 
+    const item = {
+      productId: selectedProduct.id,
+      name: selectedProduct.name,
+      category: selectedProduct.category,
+      image: selectedProduct.imageUrls?.[selectedImageIndex] || selectedProduct.image,
+      mrp: selectedProduct.mrp,
+      sellingPrice: selectedProduct.sellingPrice,
+      color: selectedProduct.color,
+      size: selectedSize,
+      quantity,
+    };
 
-
-    if (cartItems.length === 0) return;
-
-
-
-
-
-
-
-    setCartOpen(false);
-
-
-
-
-
-
-
-    setCheckoutOpen(true);
-
-
-
-
-
-
-
-    setOrderSubmitted(false);
-
-
-
-
-
-
-
-  };
+    setCheckoutItems([item]);
+    setSelectedProduct(null);
+    setSelectedImageIndex(0);
+    setSelectedRating(0);
+    setReviewText("");
+    setSelectedSize("");
+    setQuantity(1);
+    setOrderSubmitted(false);
+    setCheckoutOpen(true);
+  };
 
 
 
@@ -3254,7 +3269,7 @@ function App() {
 
 
 
-    const orderLines = cartItems
+    const orderLines = checkoutItems
 
 
 
@@ -3462,7 +3477,7 @@ function App() {
 
 
 
-      `Subtotal / Total: ₹${formatPrice(cartSubtotal)}`,
+      `Subtotal / Total: ₹${formatPrice(checkoutSubtotal)}`,
 
 
 
@@ -3470,7 +3485,7 @@ function App() {
 
 
 
-      `Total Savings: ₹${formatPrice(cartSavings)}`,
+      `Total Savings: ₹${formatPrice(checkoutSavings)}`,
 
 
 
@@ -4967,6 +4982,7 @@ function App() {
             <img
               src={siteImages.hero}
               alt="Steel Fox"
+              className="hero-image"
               style={{
                 display: "block",
                 width: "100%",
@@ -7865,7 +7881,7 @@ function App() {
 
 
 
-                    <strong>{cartCount} ITEM{cartCount === 1 ? "" : "S"}</strong>
+                    <strong>{checkoutItems.reduce((total, item) => total + item.quantity, 0)} ITEM{checkoutItems.reduce((total, item) => total + item.quantity, 0) === 1 ? "" : "S"}</strong>
 
 
 
@@ -7889,7 +7905,7 @@ function App() {
 
 
 
-                  {cartItems.map((item) => (
+                  {checkoutItems.map((item) => (
 
 
 
@@ -7993,7 +8009,7 @@ function App() {
 
 
 
-                    <strong>₹{formatPrice(cartSubtotal)}</strong>
+                    <strong>₹{formatPrice(checkoutSubtotal)}</strong>
 
 
 
@@ -8374,20 +8390,17 @@ function App() {
 
 
               <div className="rating-input">
-                <span>RATE THIS PRODUCT</span>
+                <span className="rating-label">RATE THIS PRODUCT</span>
 
-                <div>
+                <div className="rating-stars" aria-label="Choose a rating from 1 to 5 stars">
                   {[1, 2, 3, 4, 5].map((star) => (
                     <button
                       key={star}
                       type="button"
                       disabled={ratingSubmitting || Boolean(ratedProducts[selectedProduct.id])}
-                      className={(
-                        (ratedProducts[selectedProduct.id] || selectedRating) >= star
-                          ? "rated"
-                          : ""
-                      )}
+                      className={(ratedProducts[selectedProduct.id] || selectedRating) >= star ? "rated" : ""}
                       onClick={() => setSelectedRating(star)}
+                      aria-label={`${star} star${star > 1 ? "s" : ""}`}
                     >
                       ★
                     </button>
@@ -8395,13 +8408,13 @@ function App() {
                 </div>
 
                 {!ratedProducts[selectedProduct.id] && (
-                  <>
+                  <div className="review-compose-row">
                     <textarea
                       value={reviewText}
                       onChange={(event) => setReviewText(event.target.value)}
-                      placeholder="Product kaisa laga? Apna review likhiye..."
+                      placeholder="How did you like the product? Write your review..."
                       maxLength={500}
-                      rows={4}
+                      rows={3}
                       className="product-review-input"
                       disabled={ratingSubmitting}
                     />
@@ -8414,7 +8427,7 @@ function App() {
                     >
                       {ratingSubmitting ? "SUBMITTING..." : "SUBMIT REVIEW"}
                     </button>
-                  </>
+                  </div>
                 )}
 
                 {ratedProducts[selectedProduct.id] && (
@@ -8422,10 +8435,7 @@ function App() {
                     Thanks for your review.
                   </small>
                 )}
-              </div>
-
-
-              {(reviewMap[selectedProduct.id] || []).length > 0 && (
+              </div>{(reviewMap[selectedProduct.id] || []).length > 0 && (
                 <div className="customer-reviews">
                   <div className="customer-reviews-heading">
                     <span>CUSTOMER REVIEWS</span>
@@ -8433,7 +8443,7 @@ function App() {
                   </div>
 
                   <div className="customer-reviews-list">
-                    {reviewMap[selectedProduct.id].slice(0, 5).map((item, index) => (
+                    {reviewMap[selectedProduct.id].map((item, index) => (
                       <article className="customer-review" key={`${item.review}-${index}`}>
                         <div className="customer-review-stars">
                           {"★".repeat(Math.max(0, Math.min(5, item.rating)))}
@@ -8442,12 +8452,6 @@ function App() {
                       </article>
                     ))}
                   </div>
-
-                  {reviewMap[selectedProduct.id].length > 5 && (
-                    <small className="customer-review-note">
-                      Showing the latest 5 reviews.
-                    </small>
-                  )}
                 </div>
               )}
 
@@ -9145,73 +9149,33 @@ function App() {
 
 
 
-              <button
+              <div className="modal-purchase-actions">
+                <button
+                  type="button"
+                  className="modal-buy-now-button"
+                  onClick={buySelectedProductNow}
+                  disabled={!selectedSize || selectedProduct.stockStatus === "out_of_stock" || selectedProduct.sizeStock?.[selectedSize] === false}
+                >
+                  {selectedProduct.stockStatus === "out_of_stock"
+                    ? "OUT OF STOCK"
+                    : selectedSize && selectedProduct.sizeStock?.[selectedSize] === false
+                      ? "SIZE OUT OF STOCK"
+                      : `BUY NOW — ₹${formatPrice(selectedProduct.sellingPrice * quantity)}`}
+                </button>
 
-
-
-
-
-
-
-                className="modal-add-button"
-
-
-
-
-
-
-
-                onClick={addSelectedProductToBag}
-
-
-
-
-
-
-
-                disabled={
-                  !selectedSize ||
-                  selectedProduct.stockStatus === "out_of_stock" ||
-                  selectedProduct.sizeStock?.[selectedSize] === false
-                }
-              >
-                {selectedProduct.stockStatus === "out_of_stock"
-                  ? "OUT OF STOCK"
-                  : selectedSize && selectedProduct.sizeStock?.[selectedSize] === false
-                    ? "SIZE OUT OF STOCK"
-                    : "ADD TO BAG — ₹"}
-
-
-
-
-
-
-
-                {formatPrice(
-
-
-
-
-
-
-
-                  selectedProduct.sellingPrice * quantity
-
-
-
-
-
-
-
-                )}
-
-
-
-
-
-
-
-              </button>
+                <button
+                  type="button"
+                  className="modal-add-button"
+                  onClick={addSelectedProductToBag}
+                  disabled={!selectedSize || selectedProduct.stockStatus === "out_of_stock" || selectedProduct.sizeStock?.[selectedSize] === false}
+                >
+                  {selectedProduct.stockStatus === "out_of_stock"
+                    ? "OUT OF STOCK"
+                    : selectedSize && selectedProduct.sizeStock?.[selectedSize] === false
+                      ? "SIZE OUT OF STOCK"
+                      : `ADD TO BAG — ₹${formatPrice(selectedProduct.sellingPrice * quantity)}`}
+                </button>
+              </div>
 
 
 
